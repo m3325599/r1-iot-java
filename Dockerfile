@@ -31,7 +31,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# 根据系统架构下载对应的 yt-dlp 和 cloudflared 二进制
+# 根据系统架构下载对应的 yt-dlp 和 cloudflared 二进制 对的
 RUN ARCH=$(uname -m) && \
     echo "检测到系统架构: $ARCH" && \
     if [ "$ARCH" = "x86_64" ]; then \
