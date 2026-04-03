@@ -1,14 +1,66 @@
-# --------------- 第一阶段：构建项目（官方Maven镜像，自动打包，无需手动下载）---------------
-FROM maven:3.8.6-openjdk-8 AS builder
-WORKDIR /app
+# 第一阶段：构建 jar 包
+# 🔥 修复1：大写 AS 消除 FromAsCasing 警告（唯一语法修改）
+FROM eclipse-temurin:17.0.14_7-jdk AS builder
+
+ENV MAVEN_VERSION=3.9.9
+ENV MAVEN_HOME=/opt/maven
+ENV PATH=${MAVEN_HOME}/bin:${PATH}
+
+# 🔥 修复2：添加 curl --retry 3 重试，解决下载失败 exit code 22
+# 其余逻辑100%保留你原版
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl tar && \
+    curl -fsSL --retry 3 https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz -o /tmp/maven.tar.gz && \
+    mkdir -p ${MAVEN_HOME} && \
+    tar -xzf /tmp/maven.tar.gz -C ${MAVEN_HOME} --strip-components=1 && \
+    rm -rf /tmp/maven.tar.gz && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
 COPY . .
-# 打包项目（跳过测试）
+
+# 构建项目，生成 jar（原版保留）
 RUN mvn clean package -DskipTests
 
-# --------------- 第二阶段：运行项目（轻量级JRE，体积小）---------------
-FROM openjdk:8-jre-slim
+# 第二阶段：运行 jar 包（原版100%保留，无任何修改）
+FROM eclipse-temurin:17.0.14_7-jdk
+
 WORKDIR /app
-# 从构建阶段复制打包好的jar包
-COPY --from=builder /app/target/*.jar app.jar
-# 启动命令
+
+# 安装基础工具和ffmpeg（原版保留）
+RUN apt-get update && \
+    apt-get install -y wget ffmpeg ca-certificates && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# 根据系统架构下载对应的 yt-dlp 和 cloudflared 二进制（原版保留）
+RUN ARCH=$(uname -m) && \
+    echo "检测到系统架构: $ARCH" && \
+    if [ "$ARCH" = "x86_64" ]; then \
+        YT_URL="https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux"; \
+        CF_URL="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb"; \
+    elif [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then \
+        YT_URL="https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux_aarch64"; \
+        CF_URL="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb"; \
+    else \
+        echo "不支持的架构: $ARCH"; exit 1; \
+    fi && \
+    echo "下载 yt-dlp URL: $YT_URL" && \
+    wget "$YT_URL" -O /usr/local/bin/yt-dlp && \
+    chmod a+rx /usr/local/bin/yt-dlp && \
+    yt-dlp --version && \
+    echo "下载 cloudflared URL: $CF_URL" && \
+    wget "$CF_URL" -O /tmp/cloudflared.deb && \
+    dpkg -i /tmp/cloudflared.deb || apt-get install -f -y && \
+    rm -f /tmp/cloudflared.deb && \
+    cloudflared --version
+
+# 从构建阶段复制 jar 文件（原版保留）
+COPY --from=builder /workspace/r1-server/target/*.jar app.jar
+
+# 复制脚本（原版保留）
+COPY r1-server/src/main/resources/scripts/manage_cloudflared.sh /manage_cloudflared.sh
+RUN chmod +x /manage_cloudflared.sh
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
