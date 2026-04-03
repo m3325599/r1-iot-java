@@ -77,7 +77,7 @@ public class VIPMusic implements IMusicService {
         endpoint = endpoint.endsWith("/") ? endpoint : (endpoint + "/");
 
         ResponseEntity<JsonNode> response = restTemplate.getForEntity(
-                endpoint + "/api/search?keyword=" + keyword,
+                endpoint + "/search?keyword=" + keyword,
                 JsonNode.class
         );
 
