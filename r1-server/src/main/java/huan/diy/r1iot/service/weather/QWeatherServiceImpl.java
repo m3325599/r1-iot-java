@@ -84,7 +84,10 @@ public class QWeatherServiceImpl implements IWeatherService {
             mostSimilarCity = cityLocations.stream()
                     .filter(l -> l.getLocationId().equals(locationId))
                     .findFirst()
-                    .orElseThrow(() -> new RuntimeException("Location not found"));
+                    .orElse(null);
+        }
+        if (mostSimilarCity == null) {
+            return "抱歉，无法找到对应的城市，请检查城市配置。";
         }
         double latitude = mostSimilarCity.getLatitude();
         double longitude = mostSimilarCity.getLongitude();
@@ -109,9 +112,16 @@ public class QWeatherServiceImpl implements IWeatherService {
             } else if (offsetDay == 2) {
                 dayStr = "后天";
             }
-            return locationName + dayStr + "的天气情况是：" + weatherFuture.get() + airQualityFuture.get() + indicesFuture.get() + warningFuture.get();
+            
+            String wStr = weatherFuture.get() != null ? weatherFuture.get() : "";
+            String aStr = airQualityFuture.get() != null ? airQualityFuture.get() : "";
+            String iStr = indicesFuture.get() != null ? indicesFuture.get() : "";
+            String waStr = warningFuture.get() != null ? warningFuture.get() : "";
+            
+            return locationName + dayStr + "的天气情况是：" + wStr + aStr + iStr + waStr;
         } catch (Exception e) {
-            return null;
+            log.error("天气聚合查询失败", e);
+            return "抱歉，天气查询服务出现异常";
         }
 
 
@@ -148,7 +158,7 @@ public class QWeatherServiceImpl implements IWeatherService {
         return CompletableFuture.supplyAsync(() -> {
 
             try {
-                String url = device.getWeatherConfig().getEndpoint() + "/v7/weather/7d?location=" + locationId;
+                String url = device.getWeatherConfig().getEndpoint() + "/v7/weather/3d?location=" + locationId;
                 HttpHeaders headers = createHeadersWithApiKey(device.getWeatherConfig().getKey());
                 HttpEntity<String> entity = new HttpEntity<>(headers);
 

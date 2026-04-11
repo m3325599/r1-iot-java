@@ -129,7 +129,7 @@ public class TransparentProxyController {
                 Enumeration<String> values = request.getHeaders(headerName);
                 while (values.hasMoreElements()) {
                     String value = values.nextElement();
-                    System.out.println("request header: "+headerName+" => "+value);
+                    // System.out.println("request header: "+headerName+" => "+value);
 
                     if (headerName.equalsIgnoreCase("host")) {
                         proxyPost.setHeader("Host", "127.0.0.1:18888");
@@ -170,9 +170,9 @@ public class TransparentProxyController {
                     for (Header header : proxyResponse.getHeaders()) {
                         RESP_WHITE_HEADERS.add(header.getName());
                         responseHeaders.add(header.getName(), header.getValue());
-                        System.out.println("a: "+header.getName() + ": " + header.getValue());
+                        // System.out.println("a: "+header.getName() + ": " + header.getValue());
                     }
-                    System.out.println("response: "+jsonNode);
+                    // System.out.println("response: "+jsonNode);
 
                     return ResponseEntity
                             .status(proxyResponse.getCode())
@@ -189,9 +189,9 @@ public class TransparentProxyController {
                     String asrResult = ASR_MAP.get(sid).toString();
                     R1IotUtils.JSON_RET.set(jsonNode);
                     R1IotUtils.CLIENT_IP.set(DEVICE_IP.get(storeDeviceId));
-                    for(var header: proxyResponse.getHeaders()) {
-                        System.out.println("b: "+header.getName() + ": " + header.getValue());
-                    }
+                    // for(var header: proxyResponse.getHeaders()) {
+                    //     System.out.println("b: "+header.getName() + ": " + header.getValue());
+                    // }
                     AiAssistant assistant = aiDirect.getAssistants().get(storeDeviceId);
                     String answer = assistant.chat(asrResult);
                     JsonNode fixedJsonNode = R1IotUtils.JSON_RET.get();
@@ -212,7 +212,7 @@ public class TransparentProxyController {
                     }
                     byte[] binary = responseString.getBytes(StandardCharsets.UTF_8);
                     responseHeaders.setContentLength(binary.length);
-                    System.out.println("response: "+new String(binary));
+                    // System.out.println("response: "+new String(binary));
 
                     return ResponseEntity
                             .status(proxyResponse.getCode())

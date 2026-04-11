@@ -1,0 +1,456 @@
+{
+  "success": true,
+  "count": 50,
+  "musicinfo": [
+    {
+      "id": "5886682",
+      "title": "海阔天空",
+      "duration": "324",
+      "album": "乐与怒",
+      "imgUrl": "https://img4.kuwo.cn/wmvpic/324/59/71/2033539703.jpg",
+      "artist": "BEYOND",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=5886682"
+    },
+    {
+      "id": "19528080",
+      "title": "海阔天空",
+      "duration": "366",
+      "album": "",
+      "imgUrl": "",
+      "artist": "黄家驹",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=19528080"
+    },
+    {
+      "id": "557566780",
+      "title": "海阔天空 (降调宿命感)",
+      "duration": "161",
+      "album": "FELL DOWN",
+      "imgUrl": "",
+      "artist": "DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557566780"
+    },
+    {
+      "id": "556215473",
+      "title": "海阔天空 (尾奏纯享版)",
+      "duration": "103",
+      "album": "我站在烈风中（问这天下谁是英雄）",
+      "imgUrl": "",
+      "artist": "我期待的不是你",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556215473"
+    },
+    {
+      "id": "552009338",
+      "title": "海阔天空 (尾奏笛子版)",
+      "duration": "126",
+      "album": "你可能本就不在乎",
+      "imgUrl": "",
+      "artist": "我期待的不是你",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=552009338"
+    },
+    {
+      "id": "555465614",
+      "title": "海阔天空 (笛子纯享版)",
+      "duration": "127",
+      "album": "只陪伴不说爱",
+      "imgUrl": "",
+      "artist": "我期待的不是你,轩乐浩",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=555465614"
+    },
+    {
+      "id": "557842538",
+      "title": "海阔天空 (DJ氛围版)",
+      "duration": "361",
+      "album": "2026热门DJ精选",
+      "imgUrl": "",
+      "artist": "DJ小伟 - 网友热搜,DJ铁柱,DJ阿智",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557842538"
+    },
+    {
+      "id": "556397028",
+      "title": "海阔天空 (尾奏超享版)",
+      "duration": "113",
+      "album": "春",
+      "imgUrl": "",
+      "artist": "DJ铁柱Remix",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556397028"
+    },
+    {
+      "id": "174250",
+      "title": "海阔天空",
+      "duration": "322",
+      "album": "华纳至尊金曲",
+      "imgUrl": "https://img4.kuwo.cn/wmvpic/324/38/33/4055665869.jpg",
+      "artist": "BEYOND",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=174250"
+    },
+    {
+      "id": "556979534",
+      "title": "海阔天空 (尾奏纯享版)",
+      "duration": "119",
+      "album": "日历上画满星星",
+      "imgUrl": "",
+      "artist": "404Hz,我期待的不是你",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556979534"
+    },
+    {
+      "id": "556838346",
+      "title": "海阔天空 (古筝纯享笛子版)",
+      "duration": "114",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838346"
+    },
+    {
+      "id": "556216620",
+      "title": "海阔天空 (纯享版)",
+      "duration": "101",
+      "album": "就让遗憾将我的心撕开",
+      "imgUrl": "",
+      "artist": "404Hz",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556216620"
+    },
+    {
+      "id": "556986212",
+      "title": "海阔天空 (笛子纯享版)",
+      "duration": "114",
+      "album": "誓言成了无法愈合的伤",
+      "imgUrl": "",
+      "artist": "DJ阿布,DJ铁柱,我期待的不是你,404Hz",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556986212"
+    },
+    {
+      "id": "319933051",
+      "title": "海阔天空",
+      "duration": "266",
+      "album": "T.I.M.E.",
+      "imgUrl": "",
+      "artist": "G.E.M. 邓紫棋",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=319933051"
+    },
+    {
+      "id": "556838348",
+      "title": "漫步人生路(纯享小提琴)",
+      "duration": "103",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838348"
+    },
+    {
+      "id": "556838376",
+      "title": "泪痕摇（审判时刻DJ）",
+      "duration": "117",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838376"
+    },
+    {
+      "id": "556838377",
+      "title": "开团秒跟进行曲 (DJ版)",
+      "duration": "135",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838377"
+    },
+    {
+      "id": "556838357",
+      "title": "博弈进行曲（DJ硬曲版）",
+      "duration": "116",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838357"
+    },
+    {
+      "id": "556838365",
+      "title": "变成平静的人要流好多泪",
+      "duration": "114",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838365"
+    },
+    {
+      "id": "556838223",
+      "title": "我们一直一直好不好",
+      "duration": "67",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838223"
+    },
+    {
+      "id": "556838497",
+      "title": "如果缘分够的话",
+      "duration": "186",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838497"
+    },
+    {
+      "id": "556838285",
+      "title": "全世界的水都会重逢",
+      "duration": "86",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838285"
+    },
+    {
+      "id": "556838651",
+      "title": "陪你走一段路也是好的",
+      "duration": "316",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱,DJ阿布",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=556838651"
+    },
+    {
+      "id": "155169760",
+      "title": "海阔天空 (chunk 1)",
+      "duration": "193",
+      "album": "",
+      "imgUrl": "",
+      "artist": "BEYOND,黄家驹",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=155169760"
+    },
+    {
+      "id": "552798690",
+      "title": "海阔天空 (尾奏纯享版)",
+      "duration": "122",
+      "album": "凝视进行曲",
+      "imgUrl": "",
+      "artist": "DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=552798690"
+    },
+    {
+      "id": "994095",
+      "title": "海阔天空",
+      "duration": "276",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "信乐团",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=994095"
+    },
+    {
+      "id": "557228447",
+      "title": "海阔天空 (尾奏享版)",
+      "duration": "111",
+      "album": "海阔天空 (尾奏纯享版)",
+      "imgUrl": "",
+      "artist": "我期待的不是你,DJ铁柱,DJ阿智,DJ阿智,DJ阿智,DJ阿智,DJ阿智,DJ阿西阿西,宁愿当初莫相识",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557228447"
+    },
+    {
+      "id": "555916373",
+      "title": "海阔天空 (尾奏带感版)",
+      "duration": "119",
+      "album": "海阔天空尾奏 (笛子节奏版)",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=555916373"
+    },
+    {
+      "id": "558302924",
+      "title": "海阔天空（氛围版纯享）",
+      "duration": "185",
+      "album": "海阔天空（氛围版纯享）",
+      "imgUrl": "",
+      "artist": "开心豆",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=558302924"
+    },
+    {
+      "id": "555916473",
+      "title": "海阔天空 (尾奏天花板)",
+      "duration": "196",
+      "album": "海阔天空尾奏 (笛子节奏版)",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=555916473"
+    },
+    {
+      "id": "557992927",
+      "title": "海阔天空 (宿命纯音版)",
+      "duration": "120",
+      "album": "0_0 (SLOWD)",
+      "imgUrl": "",
+      "artist": "DJ屿声",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557992927"
+    },
+    {
+      "id": "553404050",
+      "title": "海阔天空 (尾奏木月笛子版)",
+      "duration": "71",
+      "album": "海阔天空",
+      "imgUrl": "https://img3.kuwo.cn/wmvpic/324/s4s24/3/3974568529.jpg",
+      "artist": "DJ铁柱Remix",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=553404050"
+    },
+    {
+      "id": "557226414",
+      "title": "海阔天空 (尾奏)",
+      "duration": "183",
+      "album": "海阔天空 (尾奏)",
+      "imgUrl": "",
+      "artist": "DJ铁柱,我期待的不是你,DJ阿智,DJ阿智,DJ阿智,DJ阿智,DJ阿智,宁愿当初莫相识,DJ阿西阿西",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557226414"
+    },
+    {
+      "id": "557550615",
+      "title": "海阔天空(amani)",
+      "duration": "218",
+      "album": "海阔天空(amani)",
+      "imgUrl": "",
+      "artist": "钰儿meme",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557550615"
+    },
+    {
+      "id": "557550576",
+      "title": "海阔天空(amani)",
+      "duration": "215",
+      "album": "海阔天空(amani)",
+      "imgUrl": "",
+      "artist": "苏晓九",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557550576"
+    },
+    {
+      "id": "557515379",
+      "title": "海阔天空 (笛子臻享版)",
+      "duration": "113",
+      "album": "真爱褪色",
+      "imgUrl": "",
+      "artist": "周好好",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=557515379"
+    },
+    {
+      "id": "554221690",
+      "title": "海阔天空",
+      "duration": "291",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "吴琳Lin",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=554221690"
+    },
+    {
+      "id": "555916331",
+      "title": "海阔天空 (古筝笛子版)",
+      "duration": "114",
+      "album": "海阔天空尾奏 (笛子节奏版)",
+      "imgUrl": "",
+      "artist": "404Hz,DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=555916331"
+    },
+    {
+      "id": "481642973",
+      "title": "海阔天空 (2025天赐的声音第六季现场)",
+      "duration": "272",
+      "album": "",
+      "imgUrl": "https://img1.kuwo.cn/wmvpic/324/s4s48/97/2067569929.jpg",
+      "artist": "黄子弘凡,江皓南,孟佳,孙耀威,王赫野,王铮亮,姚晓棠",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=481642973"
+    },
+    {
+      "id": "218006855",
+      "title": "海阔天空 (Live)",
+      "duration": "291",
+      "album": "声生不息 第1期",
+      "imgUrl": "",
+      "artist": "叶蒨文,杨千嬅,周笔畅,单依纯,刘惜君,安崎,炎明熹,CoCo李玟",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=218006855"
+    },
+    {
+      "id": "554221693",
+      "title": "海阔天空 (DJ豪大大版)",
+      "duration": "215",
+      "album": "海阔天空",
+      "imgUrl": "",
+      "artist": "吴琳Lin",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=554221693"
+    },
+    {
+      "id": "321946135",
+      "title": "海阔天空 (Live)",
+      "duration": "263",
+      "album": "",
+      "imgUrl": "",
+      "artist": "G.E.M. 邓紫棋",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=321946135"
+    },
+    {
+      "id": "332301462",
+      "title": "海阔天空 (Edit)",
+      "duration": "239",
+      "album": "Beyond 20th Anniversary",
+      "imgUrl": "",
+      "artist": "BEYOND",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=332301462"
+    },
+    {
+      "id": "553079015",
+      "title": "海阔天空 (DJ纯享版)",
+      "duration": "84",
+      "album": "你想起我我就永远在你的17 (动感氛围版)",
+      "imgUrl": "",
+      "artist": "DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=553079015"
+    },
+    {
+      "id": "539696792",
+      "title": "海阔天空 (DJ版)",
+      "duration": "213",
+      "album": "2026抖音DJ热歌榜1.0",
+      "imgUrl": "",
+      "artist": "ProdbyMend,钟泥可",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=539696792"
+    },
+    {
+      "id": "550517380",
+      "title": "海阔天空 (古筝纯享版)",
+      "duration": "116",
+      "album": "提莫队长正在待命",
+      "imgUrl": "",
+      "artist": "DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=550517380"
+    },
+    {
+      "id": "554150981",
+      "title": "海阔天空(尾奏伴奏）",
+      "duration": "172",
+      "album": "爱不分时地",
+      "imgUrl": "",
+      "artist": "DJ铁柱",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=554150981"
+    },
+    {
+      "id": "555328492",
+      "title": "海阔天空 (DJ尾奏降调版)",
+      "duration": "150",
+      "album": "我愿陪你到老",
+      "imgUrl": "",
+      "artist": "我期待的不是你,口水旋律,岛馆",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=555328492"
+    },
+    {
+      "id": "555838889",
+      "title": "海阔天空尾奏 (感觉至上)",
+      "duration": "181",
+      "album": "你也不懂我(破碎旋律版)",
+      "imgUrl": "",
+      "artist": "404Hz",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=555838889"
+    },
+    {
+      "id": "552376632",
+      "title": "海阔天空 (（降调纯享版）)",
+      "duration": "92",
+      "album": "遇见已是极大幸",
+      "imgUrl": "",
+      "artist": "我期待的不是你",
+      "url": "https://music.thaw.de5.net/v2/song/url?id=552376632"
+    }
+  ]
+}
