@@ -50,7 +50,7 @@ public class QWeatherServiceImpl implements IWeatherService {
     @Override
     public String getWeather(String locationName, int offsetDay, Device device) {
 
-        String locationId;
+        String locationId = null;
         CityLocation mostSimilarCity = null;
 
         if (StringUtils.hasLength(locationName)) {
@@ -69,25 +69,27 @@ public class QWeatherServiceImpl implements IWeatherService {
                 }
             }
 
-            locationId = mostSimilarCity.getLocationId();
+            if (mostSimilarCity != null) {
+                locationId = mostSimilarCity.getLocationId();
+            }
 
         } else {
-            locationId = device.getWeatherConfig().getLocationId();
-            for (CityLocation cityLocation : cityLocations) {
-                if (cityLocation.getLocationId().equals(locationId)) {
-                    locationName = cityLocation.getCityName();
+            if (device.getWeatherConfig() != null && StringUtils.hasLength(device.getWeatherConfig().getLocationId())) {
+                locationId = device.getWeatherConfig().getLocationId();
+                for (CityLocation cityLocation : cityLocations) {
+                    if (cityLocation.getLocationId().equals(locationId)) {
+                        locationName = cityLocation.getCityName();
+                        mostSimilarCity = cityLocation;
+                        break;
+                    }
                 }
+            } else {
+                return "抱歉，您没有在配置文件中设置默认查询的城市，请在指令中带上城市名字。";
             }
         }
 
-        if (mostSimilarCity == null) {
-            mostSimilarCity = cityLocations.stream()
-                    .filter(l -> l.getLocationId().equals(locationId))
-                    .findFirst()
-                    .orElse(null);
-        }
-        if (mostSimilarCity == null) {
-            return "抱歉，无法找到对应的城市，请检查城市配置。";
+        if (mostSimilarCity == null || !StringUtils.hasLength(locationId)) {
+            return "抱歉，无法找到对应的城市，请检查城市名或城市编号。";
         }
         double latitude = mostSimilarCity.getLatitude();
         double longitude = mostSimilarCity.getLongitude();

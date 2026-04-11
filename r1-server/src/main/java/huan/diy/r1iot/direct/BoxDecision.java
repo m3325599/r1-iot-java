@@ -226,9 +226,24 @@ public class BoxDecision {
 
         log.info("Called queryWeather with locationName={}, offsetDay={}", locationName, offsetDay);
 
-        String ret = weatherServiceMap.get(device.getWeatherConfig().getChoice()).getWeather(locationName, offsetDay, device);
-        R1IotUtils.JSON_RET.set(R1IotUtils.sampleChatResp(ret));
+        try {
+            String choice = "和风天气";
+            if (device.getWeatherConfig() != null && StringUtils.hasLength(device.getWeatherConfig().getChoice())) {
+                choice = device.getWeatherConfig().getChoice();
+            }
+            
+            IWeatherService weatherService = weatherServiceMap.getOrDefault(choice, weatherServiceMap.get("和风天气"));
+            if (weatherService == null) {
+                R1IotUtils.JSON_RET.set(R1IotUtils.sampleChatResp("抱歉，系统未找到可用的天气服务"));
+                return;
+            }
 
+            String ret = weatherService.getWeather(locationName, offsetDay, device);
+            R1IotUtils.JSON_RET.set(R1IotUtils.sampleChatResp(ret));
+        } catch (Exception e) {
+            log.error("Weather tool execution failed", e);
+            R1IotUtils.JSON_RET.set(R1IotUtils.sampleChatResp("抱歉，获取天气信息时发生错误"));
+        }
     }
 
 }
