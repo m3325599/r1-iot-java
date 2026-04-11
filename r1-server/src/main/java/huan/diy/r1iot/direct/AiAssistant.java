@@ -105,8 +105,11 @@ public class AiAssistant {
         chatMessages.add(userMessage);
 
         AiMessage aiMessage = chatResponse.aiMessage();
+        
+        log.info("AI LLM Response Message: {}", aiMessage);
 
         List<ToolExecutionRequest> toolExecutionRequests = aiMessage.toolExecutionRequests();
+        log.info("AI LLM Requested Tools Count: {}", toolExecutionRequests == null ? 0 : toolExecutionRequests.size());
 
         if (CollectionUtils.isEmpty(toolExecutionRequests)) {
             chatMessages.add(aiMessage);
@@ -115,11 +118,16 @@ public class AiAssistant {
         var toolExecutionRequest = toolExecutionRequests.get(0);
         log.info("ToolExecutionRequest: {}", (toolExecutionRequest.toString()));
         ToolExecutor toolExecutor = new DefaultToolExecutor(boxDecision, toolExecutionRequest);
-        String result = toolExecutor.execute(toolExecutionRequest, UUID.randomUUID().toString());
-        ToolExecutionResultMessage toolExecutionResultMessage = ToolExecutionResultMessage.from(toolExecutionRequest, result);
-
-        log.info(toolExecutionResultMessage.toString());
-//        chatMessages.add(toolExecutionResultMessage);
+        try {
+            log.info("Executing Tool: {}", toolExecutionRequest.name());
+            String result = toolExecutor.execute(toolExecutionRequest, UUID.randomUUID().toString());
+            log.info("Tool [{}] Execution Finished, Result: {}", toolExecutionRequest.name(), result);
+            ToolExecutionResultMessage toolExecutionResultMessage = ToolExecutionResultMessage.from(toolExecutionRequest, result == null ? "void" : result);
+            log.info("ToolExecutionResultMessage generated: {}", toolExecutionResultMessage);
+        } catch (Exception e) {
+            log.error("！！！！ Tool Executor Exception ！！！！", e);
+            throw new RuntimeException(e);
+        }
 
         return null;
 

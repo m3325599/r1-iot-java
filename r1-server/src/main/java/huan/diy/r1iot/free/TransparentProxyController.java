@@ -201,6 +201,9 @@ public class TransparentProxyController {
 
                     String responseString = objectMapper.writeValueAsString(fixedJsonNode);
                     log.info("\n==== FROM AI ====\n {}", responseString);
+                    if (fixedJsonNode == null) {
+                         log.error("！！！！ JSON_RET IS NULL ！！！！ This causes the speaker to receive null string and crash!");
+                    }
 
                     // ✅ 构建响应，拷贝所有响应头并重新设置 Content-Length
                     HttpHeaders responseHeaders = new HttpHeaders();
@@ -219,6 +222,7 @@ public class TransparentProxyController {
                             .headers(responseHeaders)
                             .body(binary);
                 } catch (Exception e) {
+                    log.error("\n！！！！ 位于 AI 代理执行环节发生严重异常 ！！！！\n", e);
                     e.printStackTrace();
                     return ResponseEntity
                             .status(500)
