@@ -102,9 +102,6 @@ public class QWeatherServiceImpl implements IWeatherService {
             CompletableFuture<String> indicesFuture = getIndices(device, locationId, offsetDay);
             CompletableFuture<String> warningFuture = getWarnings(device, locationId);
 
-            // 等待所有请求完成
-            CompletableFuture.allOf(weatherFuture, airQualityFuture, indicesFuture).join();
-
             // 4. 聚合结果
             String dayStr = "";
             if (offsetDay == 0) {
@@ -115,10 +112,25 @@ public class QWeatherServiceImpl implements IWeatherService {
                 dayStr = "后天";
             }
             
-            String wStr = weatherFuture.get() != null ? weatherFuture.get() : "";
-            String aStr = airQualityFuture.get() != null ? airQualityFuture.get() : "";
-            String iStr = indicesFuture.get() != null ? indicesFuture.get() : "";
-            String waStr = warningFuture.get() != null ? warningFuture.get() : "";
+            String wStr = "";
+            try { wStr = weatherFuture.get(3000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("Weather API timeout"); }
+            if (wStr == null) wStr = "";
+            
+            String aStr = "";
+            try { aStr = airQualityFuture.get(1000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("AirQuality API timeout"); }
+            if (aStr == null) aStr = "";
+            
+            String iStr = "";
+            try { iStr = indicesFuture.get(1000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("Indices API timeout"); }
+            if (iStr == null) iStr = "";
+            
+            String waStr = "";
+            try { waStr = warningFuture.get(1000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("Warning API timeout"); }
+            if (waStr == null) waStr = "";
+            
+            if (wStr.isEmpty() && aStr.isEmpty() && iStr.isEmpty() && waStr.isEmpty()) {
+                return "抱歉，通过和风天气查询时遇到了网络延迟，未能获取到数据。";
+            }
             
             return locationName + dayStr + "的天气情况是：" + wStr + aStr + iStr + waStr;
         } catch (Exception e) {
