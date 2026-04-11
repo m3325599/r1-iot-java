@@ -102,7 +102,14 @@ public class QWeatherServiceImpl implements IWeatherService {
             CompletableFuture<String> indicesFuture = getIndices(device, locationId, offsetDay);
             CompletableFuture<String> warningFuture = getWarnings(device, locationId);
 
-            // 4. 聚合结果
+            // 4. 聚合结果，强制只等3秒全局
+            try {
+                CompletableFuture.allOf(weatherFuture, airQualityFuture, indicesFuture, warningFuture)
+                        .get(3000, java.util.concurrent.TimeUnit.MILLISECONDS);
+            } catch (Exception e) {
+                log.warn("和风天气部分或全部请求超时: {}", e.getMessage());
+            }
+
             String dayStr = "";
             if (offsetDay == 0) {
                 dayStr = "今天";
@@ -112,21 +119,15 @@ public class QWeatherServiceImpl implements IWeatherService {
                 dayStr = "后天";
             }
             
-            String wStr = "";
-            try { wStr = weatherFuture.get(3000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("Weather API timeout"); }
-            if (wStr == null) wStr = "";
+            String wStr = weatherFuture.getNow("");
+            String aStr = airQualityFuture.getNow("");
+            String iStr = indicesFuture.getNow("");
+            String waStr = warningFuture.getNow("");
             
-            String aStr = "";
-            try { aStr = airQualityFuture.get(1000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("AirQuality API timeout"); }
-            if (aStr == null) aStr = "";
-            
-            String iStr = "";
-            try { iStr = indicesFuture.get(1000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("Indices API timeout"); }
-            if (iStr == null) iStr = "";
-            
-            String waStr = "";
-            try { waStr = warningFuture.get(1000, java.util.concurrent.TimeUnit.MILLISECONDS); } catch (Exception e) { log.warn("Warning API timeout"); }
-            if (waStr == null) waStr = "";
+            wStr = (wStr == null) ? "" : wStr;
+            aStr = (aStr == null) ? "" : aStr;
+            iStr = (iStr == null) ? "" : iStr;
+            waStr = (waStr == null) ? "" : waStr;
             
             if (wStr.isEmpty() && aStr.isEmpty() && iStr.isEmpty() && waStr.isEmpty()) {
                 return "抱歉，通过和风天气查询时遇到了网络延迟，未能获取到数据。";
