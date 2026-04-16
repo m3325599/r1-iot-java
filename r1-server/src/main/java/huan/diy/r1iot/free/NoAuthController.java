@@ -29,6 +29,9 @@ public class NoAuthController {
     @Autowired
     private Map<String, IMusicService> musicServiceMap;
 
+    @Autowired
+    private huan.diy.r1iot.model.R1GlobalConfig globalConfig;
+
     @PostMapping("/auth")
     public String login(@RequestBody final Map<String, String> map) {
         String password = map.get("password");
@@ -93,7 +96,15 @@ public class NoAuthController {
             }
             response.setHeader("r1-sname", ret.get("service").asText());
             log.info("from ai: {}", ret.toString());
-            return ret;
+            
+            // Fix host in response node
+            try {
+                String fixedJson = R1IotUtils.fixHost(R1IotUtils.getObjectMapper().writeValueAsString(ret), globalConfig.getHostIp());
+                return R1IotUtils.getObjectMapper().readTree(fixedJson);
+            } catch (Exception e) {
+                log.error("Failed to fix host in chat response", e);
+                return ret;
+            }
         } finally {
             R1IotUtils.JSON_RET.remove();
         }

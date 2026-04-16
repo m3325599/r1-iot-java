@@ -6,14 +6,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import dev.langchain4j.internal.Json;
 import huan.diy.r1iot.model.Device;
+import huan.diy.r1iot.model.R1GlobalConfig;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @UtilityClass
@@ -48,6 +51,14 @@ public class R1IotUtils {
 
     @Getter
     public ObjectMapper objectMapper = new ObjectMapper();
+
+    public String fixHost(String content, String hostIp) {
+        if (!StringUtils.hasLength(hostIp)) {
+            return content;
+        }
+        String host = hostIp.replace("http://", "").replace("https://", "");
+        return content.replace("127.0.0.1:18888", host);
+    }
 
     public JsonNode sampleChatResp(String ttsContent) {
         ObjectNode objectNode = objectMapper.createObjectNode();
